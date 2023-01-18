@@ -1,5 +1,6 @@
 package com.exam.tournament.service;
 
+import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,8 +19,9 @@ import java.util.stream.Stream;
 
 @Service
 @Log4j2
-@PropertySource("classpath:values.properties")
+@PropertySource("classpath:application.properties")
 public class FilesService {
+    @Getter
     @Value("${files.location}")
     private String dir;
 

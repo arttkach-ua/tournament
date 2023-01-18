@@ -1,5 +1,6 @@
 package com.exam.tournament.model;
 
+import com.exam.tournament.exceptions.TournamentProcessingException;
 import com.exam.tournament.model.results.personal.PersonalResult;
 import lombok.Data;
 
@@ -21,7 +22,7 @@ public class Game {
         return teams.stream()
                 .filter(a->teamName.equals(a.getName()))
                 .findFirst()
-                .orElseThrow(()->new RuntimeException("Team not found"));
+                .orElseThrow(()->new TournamentProcessingException("Team not found"));
     }
 
     public void addPersonalResult(PersonalResult personalResult){

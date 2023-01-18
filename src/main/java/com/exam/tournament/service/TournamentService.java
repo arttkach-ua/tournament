@@ -29,8 +29,8 @@ public class TournamentService {
     public void processTournament(){
         Tournament tournament = new Tournament();
         fillTournament(tournament);
-        Player mvp = getMVP(tournament);
-        printInfoAboutMVP(mvp);
+        tournament.setMvp(getMVP(tournament));
+        printInfoAboutMVP(tournament.getMvp());
     }
 
     /**
