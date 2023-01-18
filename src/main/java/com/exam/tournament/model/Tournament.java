@@ -10,6 +10,8 @@ public class Tournament {
     Set<Player> members = new HashSet<>();
     Set<Game> games = new HashSet<>();
 
+    Player mvp;
+
     public Player getTournamentMember(String playerName){
 
         return members.stream()

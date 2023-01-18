@@ -24,6 +24,8 @@ public class GameService {
     private PersonalResultService personalResultService;
     @Autowired
     private FilesService filesService;
+    @Autowired
+    private TeamService teamService;
 
     /**
      * Sets into game type of game
@@ -81,20 +83,8 @@ public class GameService {
     public Map<Team, Integer> getTeamScores(List<List<String>> gameData){
         return gameData.stream()
                 .skip(1)
-                .collect(Collectors.groupingBy(d->createTeam(d.get(3)),Collectors.summingInt(d->Integer.parseInt(d.get(4)))));
+                .collect(Collectors.groupingBy(d->teamService.createTeam(d.get(3)),Collectors.summingInt(d->Integer.parseInt(d.get(4)))));
     }
-
-    /**
-     * Creates new team
-     * @param teamName
-     * @return
-     */
-    private Team createTeam(String teamName){
-        return Team.builder()
-                .name(teamName)
-                .build();
-    }
-
     /**
      * Gets personal result from data and adds it to game
      * @param game
